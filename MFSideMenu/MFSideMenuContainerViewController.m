@@ -520,7 +520,7 @@ typedef enum {
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     
-    if ([gestureRecognizer.view isKindOfClass:[UITableView class]] && otherGestureRecognizer.view.tag == 0) {
+    if ([otherGestureRecognizer.view isKindOfClass:[UITableView class]] && otherGestureRecognizer.view.tag == 0) {
         return NO;
     }
     
