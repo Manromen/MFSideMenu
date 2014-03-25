@@ -484,6 +484,8 @@ typedef enum {
 #pragma mark - MFSideMenuPanMode
 
 - (BOOL) centerViewControllerPanEnabled {
+    
+    if (self.menuState != MFSideMenuStateClosed && (self.panMode & MFSideMenuPanModeClosing)) return YES;
     return ((self.panMode & MFSideMenuPanModeCenterViewController) == MFSideMenuPanModeCenterViewController);
 }
 
