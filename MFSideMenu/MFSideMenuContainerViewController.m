@@ -63,6 +63,7 @@ typedef enum {
 - (id) init {
     self = [super init];
     if(self) {
+        _allowedSimultaneousGestureRecognizers = [NSMutableArray array];
         [self setDefaultSettings];
     }
     return self;
@@ -70,6 +71,7 @@ typedef enum {
 
 - (id)initWithCoder:(NSCoder *)inCoder {
     id coder = [super initWithCoder:inCoder];
+    _allowedSimultaneousGestureRecognizers = [NSMutableArray array];
     [self setDefaultSettings];
     return coder;
 }
@@ -520,6 +522,10 @@ typedef enum {
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    if ([self.allowedSimultaneousGestureRecognizers containsObject:otherGestureRecognizer]) {
+        return YES;
+    }
 	return NO;
 }
 

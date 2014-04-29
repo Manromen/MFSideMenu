@@ -62,6 +62,9 @@ typedef enum {
 @property (nonatomic, assign) BOOL menuSlideAnimationEnabled;
 @property (nonatomic, assign) CGFloat menuSlideAnimationFactor; // higher = less menu movement on animation
 
+// gesture recognizers that are allowed to recognize symultaneously with our pan recognizer
+// keep in mind that nsarrays have a strong pointer to the objects, so make sure to remove the objects if you don't need them anymore
+@property (nonatomic, strong) NSMutableArray *allowedSimultaneousGestureRecognizers;
 
 - (void)toggleLeftSideMenuCompletion:(void (^)(void))completion;
 - (void)toggleRightSideMenuCompletion:(void (^)(void))completion;
